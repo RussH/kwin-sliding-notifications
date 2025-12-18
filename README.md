@@ -2,7 +2,7 @@
 
 ![preview](preview.gif)
 
-This KWin effect provides a tactile, spring-y **horizontal slide** for Plasma notifications, replacing the default diagonal or fade animations. It is specifically designed for **KWin 6 (Qt6)** and includes **“Stealth Exit”** logic to prevent the common flickering/popping issues seen in custom KWin animations.
+This KWin effect provides a tactile, spring-y **horizontal slide** for Plasma notifications, replacing the default fade animations. It is specifically designed for **KDE Neon**, **KWin 6 (Qt6)**.
 
 This was only built for me on KDE Neon, so I'm not committing to any specific support especially for other Distro's - KDE Neon is fairly picky so I guess it's unlikely to work cleanly elsewhere, but it's a working example for you.
 
@@ -15,7 +15,7 @@ This was only built for me on KDE Neon, so I'm not committing to any specific su
 
 ## Prerequisites
 
-You will need the following development packages installed on your system (Ubuntu/KDE Neon names shown):
+You will need the following development packages installed on your system (KDE Neon names shown):
 
 ```bash
 sudo apt install g++ cmake extra-cmake-modules kwin-dev \
