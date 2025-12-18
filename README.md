@@ -1,6 +1,7 @@
 # KWin Horizontal Sliding Notifications (Plasma 6)
 
 ![preview](preview.gif)
+
 This KWin effect provides a tactile, spring-y horizontal slide for Plasma notifications, replacing the default diagonal or fade animations. It is specifically designed for KWin 6 (Qt6) and includes a "Stealth Exit" logic to prevent the common flickering/popping issues seen in custom KWin animations.
 
 ## Key Features
