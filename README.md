@@ -6,6 +6,8 @@ This KWin effect provides a tactile, spring-y **horizontal slide** for Plasma no
 
 This was only built for me on KDE Neon, so I'm not committing to any specific support especially for other Distro's - KDE Neon is fairly picky so I guess it's unlikely to work cleanly elsewhere, but it's a working example for you.
 
+Currently working fine on Plasma 6.2
+
 ## Key Features
 
 - **Horizontal Only**: Strict lock on the **Y** and **Z** axes to prevent diagonal drifting (version 10 looked very odd!)
