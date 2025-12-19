@@ -68,7 +68,7 @@ KWin 6 headers are not considered a stable API. If this breaks after a major Pla
 - Verify the `EffectWindow` methods (like `isNotification()`) haven't been renamed.
 - Check system logs for loading errors (e.g. “Symbol not found”):
 
-- This is my specific CMakeLists.txt below, I've tried to make th eone here more generic. If you are on KDE Neon you may want to use this instead  
+- This is my specific CMakeLists.txt below, I've tried to make the one here more generic so it works for everyone. If you are on KDE Neon you may want to use this instead  
 
 ```bash
 cmake_minimum_required(VERSION 3.16)
