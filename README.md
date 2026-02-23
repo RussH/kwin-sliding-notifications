@@ -6,10 +6,10 @@ This KWin effect provides a tactile, spring-y **horizontal slide** for Plasma no
 
 ## Updated for Plasma 6.6
 
- This effect has been updated for KDE Plasma 6.6.
- API: Uses the new KWin::Region signature.
- Path: Plugins must now be installed to /usr/lib/qt6/plugins/kwin/effects/.
- Sound: Uses pw-play with the Ocean sound theme (.oga).
+- This effect has been updated for KDE Plasma 6.6.
+- API: Uses the new KWin::Region signature.
+- Path: Plugins must now be installed to /usr/lib/qt6/plugins/kwin/effects/.
+- Sound: Uses pw-play with the Ocean sound theme (.oga).
 
 ### Installation for Plasma 6 (Note: tested on CachyOS):
 
