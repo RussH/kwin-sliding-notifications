@@ -4,16 +4,14 @@
 
 This KWin effect provides a tactile, spring-y **horizontal slide** for Plasma notifications, replacing the default fade animations. Originally designed for KDE Neon, this version has been updated with a **generic build system** to support various Plasma 6 distributions.
 
-This project file reworked to make a successful generic CMakeLists.txt and SlidingEffects.cpp plugin
-
 ## Updated for Plasma 6.6
 
-This effect has been updated for KDE Plasma 6.6.
-API: Uses the new KWin::Region signature.
-Path: Plugins must now be installed to /usr/lib/qt6/plugins/kwin/effects/.
-Sound: Uses pw-play with the Ocean sound theme (.oga).
+ This effect has been updated for KDE Plasma 6.6.
+ API: Uses the new KWin::Region signature.
+ Path: Plugins must now be installed to /usr/lib/qt6/plugins/kwin/effects/.
+ Sound: Uses pw-play with the Ocean sound theme (.oga).
 
-### Installation for Plasma 6:
+### Installation for Plasma 6 (Note: tested on CachyOS):
 
 ```bash
 mkdir build && cd build
