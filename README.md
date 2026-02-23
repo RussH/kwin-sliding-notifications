@@ -6,6 +6,23 @@ This KWin effect provides a tactile, spring-y **horizontal slide** for Plasma no
 
 This project file reworked to make a successful generic CMakeLists.txt and SlidingEffects.cpp plugin
 
+##Updated for Plasma 6.6
+
+This effect has been updated for KDE Plasma 6.6.
+API: Uses the new KWin::Region signature.
+Path: Plugins must now be installed to /usr/lib/qt6/plugins/kwin/effects/.
+Sound: Uses pw-play with the Ocean sound theme (.oga).
+
+###Installation for Plasma 6:
+
+```bash
+mkdir build && cd build
+cmake ..
+make
+sudo install -m 755 kwin_final_sliding.so /usr/lib/qt6/plugins/kwin/effects/
+sudo ln -s /usr/lib/qt6/plugins/kwin/effects/kwin_final_sliding.so /usr/lib/qt6/plugins/kwin/effects/plugins/kwin_final_sliding.so
+```
+
 ## Key Features
 
 - **Horizontal Only**: Strict lock on the **Y** and **Z** axes to prevent diagonal drifting.
