@@ -21,6 +21,9 @@ namespace KWin {
             Q_UNUSED(parent);
             Q_UNUSED(args);
 
+            // LOG FOR VERIFICATION
+            qWarning() << "!!! [SLIDE-PLUGIN-LOADED] VERSION: CACHY-PLASMA-6.6-V12 !!!";
+
             connect(effects, &EffectsHandler::windowAdded, this, &SlidingEffect::onWindowAdded);
             connect(effects, &EffectsHandler::windowClosed, this, &SlidingEffect::onWindowClosed);
             connect(effects, &EffectsHandler::windowDeleted, this, &SlidingEffect::onWindowDeleted);
@@ -29,8 +32,8 @@ namespace KWin {
         bool isNotification(EffectWindow *w) {
             if (!w) return false;
             if (w->isNotification()) return true;
-            if (w->isMenu() || w->isAppletPopup()) return false;
 
+            // Check for Plasma 6 specific classes
             bool isPlasma = w->windowClass().contains(u"plasmashell"_s, Qt::CaseInsensitive);
             bool isNotifyRole = w->windowRole().contains(u"notification"_s, Qt::CaseInsensitive);
 
@@ -39,8 +42,10 @@ namespace KWin {
 
         void onWindowAdded(EffectWindow *w) {
             if (isNotification(w)) {
-                QProcess::startDetached(u"/usr/bin/pw-play"_s, {u"/usr/share/sounds/oxygen/stereo/message-new-instant.ogg"_s});
+                // PLAY SOUND: Using pw-play for PipeWire (Standard on CachyOS)
+                QProcess::startDetached(u"/usr/bin/pw-play"_s, {u"/usr/share/sounds/ocean/stereo/message-attention.oga"_s});
 
+                // Intro Animation: Slide in from right (400px) and fade in
                 animate(w, AnimationEffect::Translation, 0, 350, FPx2(0.0),
                         QEasingCurve::OutBack, 0, FPx2(400.0));
                 animate(w, AnimationEffect::Opacity, 0, 250, FPx2(1.0),
@@ -54,6 +59,7 @@ namespace KWin {
                 timer->start();
                 m_timers[w] = timer;
 
+                // Keep window alive for the exit slide (500ms)
                 animate(w, AnimationEffect::Opacity, 0, 500, FPx2(0.0),
                         QEasingCurve::Linear, 0, FPx2(1.0), false, true);
             }
@@ -65,20 +71,29 @@ namespace KWin {
             }
         }
 
-        void drawWindow(const RenderTarget &renderTarget, const RenderViewport &viewport, EffectWindow *w, int mask, const QRegion &region, WindowPaintData &data) override {
+        void drawWindow(const RenderTarget &renderTarget, const RenderViewport &viewport, EffectWindow *w, int mask, const Region &region, WindowPaintData &data) override {
             if (isNotification(w)) {
+                // Ensure no vertical/depth jitter
                 data.setYTranslation(0);
                 data.setZTranslation(0);
 
                 if (m_timers.contains(w)) {
                     qint64 elapsed = m_timers[w]->elapsed();
-                    if (elapsed > 200) return;
+
+                    // EXIT SHIELD:
+                    // If the animation is over (200ms) OR if it's moved even a tiny bit,
+                    // force it to invisible. This stops the "pop-back" frame.
+                    if (elapsed > 200) {
+                        data.setOpacity(0.0);
+                        return;
+                    }
 
                     float progress = static_cast<float>(elapsed) / 200.0f;
                     data.setXTranslation(500.0f * progress);
                     data.setOpacity(1.0f - progress);
                 }
             }
+            // Pass the new Region type up to the parent
             AnimationEffect::drawWindow(renderTarget, viewport, w, mask, region, data);
         }
 
