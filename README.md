@@ -1,5 +1,11 @@
 # KWin Horizontal Sliding Notifications (Plasma 6)
 
+## Upstream status
+
+KWin now has an upstream built-in Sliding Notifications effect, added via KDE MR !9139 / commit edc0bb4. On Plasma versions that include `slidingnotifications`, you should use the built-in effect instead of this plugin.
+
+This repository remains useful for older Plasma 6 versions where the upstream effect is not yet available, or for experimenting with a more exaggerated horizontal slide and optional sound playback.
+
 ![preview](preview.gif)
 
 This KWin effect provides a tactile, spring-y **horizontal slide** for Plasma notifications, replacing the default fade animations. Originally designed for KDE Neon, this version has been updated with a **generic build system** to support various Plasma 6 distributions.
